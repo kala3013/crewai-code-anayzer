@@ -257,6 +257,4 @@ print(results['validation'])
 
 ## 📝 License
 
-This project is provided for educational and demonstration purposes.#   c r e w a i - c o d e - a n a l y z e r  
- #   c r e w a i - c o d e - a n a y z e r  
- 
+This project is provided for educational and demonstration purposes.#
