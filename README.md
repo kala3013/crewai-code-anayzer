@@ -1,103 +1,198 @@
-# Code Analysis & Correction System
+# 🧠 Code Analysis & Correction System
 
-A self-contained Python tool that automatically **analyzes** Python code for errors and **corrects** them. Inspired by multi-agent AI systems like CrewAI, this program uses three modular components — **Code Analyzer**, **Code Corrector**, and **Manager** — working together in a sequential pipeline.
+### 🔍 Analyze → 🛠️ Correct → ✅ Validate
 
-No external API keys, internet access, or AI services required. Pure Python rule-based engine.
+> **An intelligent, self-contained Python code analysis pipeline that automatically detects, corrects, and validates common Python programming errors — without APIs, internet access, or external AI services.**
+
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![AI](https://img.shields.io/badge/AI-Inspired%20Pipeline-8A2BE2?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-Modular-orange?style=for-the-badge)
+![Dependencies](https://img.shields.io/badge/Dependencies-Standard%20Library-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+
+</p>
+
+<p align="center">
+
+**A rule-based developer tool inspired by multi-agent AI architectures such as CrewAI.**
+
+<br>
+
+`Code Analyzer` → `Code Corrector` → `Pipeline Manager` → `Validation`
+
+</p>
 
 ---
 
-## 🧠 System Architecture
+## 🚀 Project Overview
 
+Writing code is only the first step.
+
+Developers often spend significant time identifying:
+
+* ❌ Syntax errors
+* ❌ Incorrect indentation
+* ❌ Missing colons
+* ❌ Incorrect block structures
+* ❌ Misplaced `return` statements
+* ❌ Runtime failures
+* ❌ Unexpected program output
+
+This project demonstrates how a **modular intelligent pipeline** can automate several of these tasks.
+
+The system takes buggy Python code as input and processes it through three major stages:
+
+```text
+        📝 Python Source Code
+                 │
+                 ▼
+        ┌─────────────────┐
+        │  🔍 Analyzer    │
+        │ Error Detection │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │  🛠️ Corrector   │
+        │  Error Fixing   │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │  🎯 Validator   │
+        │ Compile + Run   │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │  📊 Final Report │
+        └─────────────────┘
 ```
+
+The entire process runs locally using **pure Python**.
+
+---
+
+# ✨ Key Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔍 Intelligent Code Analysis
+
+Detects common Python problems including:
+
+* Syntax errors
+* Indentation errors
+* Missing colons
+* Invalid block structures
+* Logical issues
+* Runtime problems
+
+</td>
+
+<td width="50%">
+
+### 🛠️ Automated Correction
+
+Automatically attempts to repair:
+
+* Incorrect indentation
+* Missing `:`
+* Misplaced `return`
+* Loop body indentation
+* `if / elif / else` structures
+* Function-level statements
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### ✅ Runtime Validation
+
+After correction, the system:
+
+* Compiles the code
+* Executes the code
+* Detects runtime failures
+* Tests functions
+* Compares expected output
+
+</td>
+
+<td width="50%">
+
+### 📊 Detailed Reporting
+
+Generates:
+
+* Error reports
+* Line numbers
+* Correction summaries
+* Validation results
+* Final execution output
+
+</td>
+</tr>
+</table>
+
+---
+
+# 🧩 System Architecture
+
+```text
 ┌─────────────────────────────────────────────────────────────┐
-│                     PipelineManager                         │
-│                      (Manager)                              │
-├─────────────────────────────────────────────────────────────┤
-│  Step 1                    Step 2                    Step 3 │
-│  ┌──────────────┐         ┌──────────────┐         ┌──────┐ │
-│  │Code Analyzer │ ──────▶ │Code Corrector│ ──────▶ │Valid.│ │
-│  │ (detects     │         │  (fixes      │         │(test)│ │
-│  │  errors)     │         │   errors)    │         │      │ │
-│  └──────────────┘         └──────────────┘         └──────┘ │
+│                    PIPELINE MANAGER                         │
+│                                                             │
+│   ┌───────────────┐      ┌───────────────┐                │
+│   │ CODE ANALYZER │ ───▶ │ CODE CORRECTOR│                │
+│   │               │      │               │                │
+│   │ Detect Errors │      │ Fix Errors    │                │
+│   └───────────────┘      └───────┬───────┘                │
+│                                  │                          │
+│                                  ▼                          │
+│                         ┌─────────────────┐                │
+│                         │    VALIDATOR    │                │
+│                         │                 │                │
+│                         │ Compile        │                │
+│                         │ Execute        │                │
+│                         │ Functional Test│                │
+│                         └────────┬────────┘                │
+│                                  │                          │
+│                                  ▼                          │
+│                         ┌─────────────────┐                │
+│                         │  FINAL REPORT   │                │
+│                         └─────────────────┘                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Components
+---
 
-| Component | Role | Description |
-|-----------|------|-------------|
-| **Code Analyzer** | Error Detection | Scans Python code for syntax, indentation, logical, and runtime errors. Produces a numbered error report with line numbers. |
-| **Code Corrector** | Error Fixing | Automatically fixes indentation, missing colons, and misplaced return statements. Outputs the complete corrected code. |
-| **Manager** | Orchestration | Runs the pipeline: analysis → correction → validation. Validates output by compiling, executing, and testing the corrected code. |
+# 🧠 Core Components
+
+| Component               | Responsibility                                            | Technology                |
+| ----------------------- | --------------------------------------------------------- | ------------------------- |
+| 🔍 **Code Analyzer**    | Detects syntax, indentation, logical and runtime problems | Python AST + custom rules |
+| 🛠️ **Code Corrector**  | Automatically modifies common coding mistakes             | Python                    |
+| 🎯 **Pipeline Manager** | Coordinates the complete workflow                         | Python                    |
+| ✅ **Validator**         | Compiles, executes and tests corrected code               | Python Runtime            |
+| 🧪 **Test Suite**       | Verifies analyzer and correction behaviour                | Python                    |
 
 ---
 
-## ✨ Features
+# 🔄 How The Pipeline Works
 
-- **Syntax Error Detection** — missing colons, invalid Python syntax
-- **Indentation Correction** — fixes loop bodies at wrong indentation levels (e.g., Fibonacci bug)
-- **Conditional Block Handling** — correctly handles `if`/`elif`/`else` blocks and their bodies
-- **Return Statement Placement** — automatically moves function-level `return` statements outside of loops
-- **Runtime Validation** — compiles and executes corrected code to verify correctness
-- **Functional Testing** — tests corrected functions with sample inputs
-- **Detailed Reports** — comprehensive error report, fix summary, and final output
+### 01 — 📝 Input
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Python 3.8 or higher
-- No additional packages required (uses only the Python standard library)
-
-### Installation
-
-```bash
-# Clone or download the project
-cd crewai-code-analyzer
-```
-
-### Running the Demo
-
-```bash
-python standalone_main.py
-```
-
-This runs the full pipeline on the built-in example (buggy Fibonacci sequence code).
-
-### Running Tests
-
-```bash
-# Test the analyzer only
-python test_analyzer.py
-
-# Test the full analysis + correction pipeline
-python test_corrector.py
-```
-
----
-
-## 📋 Example
-
-### Input (Buggy Code)
+The user provides Python source code.
 
 ```python
 def fibonacci_iterative(n):
-
-    if n < 0:
-
-        return []
-
-    elif n == 1:
-
-        return [0]
-
-    elif n == 2:
-
-        return [0, 1]
-
-
 
     fib_sequence = [0, 1]
 
@@ -110,31 +205,116 @@ def fibonacci_iterative(n):
     return fib_sequence
 ```
 
-### Analysis Output
+---
 
+### 02 — 🔍 Analyze
+
+The Analyzer examines the source code and identifies structural problems.
+
+```text
+✗ 3 ERROR(S) FOUND
+
+1. SyntaxError
+   Expected an indented block after 'for'
+
+2. IndentationError
+   Expected indented block
+
+3. IndentationError
+   Invalid indentation inside loop
 ```
-  ✗ 3 ERROR(S) FOUND:
 
-  1. Line 21: SyntaxError - expected an indented block after 'for' statement on line 19
-  2. Line 21: IndentationError - Expected an indented block after 'for i in range(2, n)'
-  3. Line 21: IndentationError - Expected indented block after 'for' loop at line 19
+---
+
+### 03 — 🛠️ Correct
+
+The Corrector analyzes the detected structure and generates repaired code.
+
+```python
+def fibonacci_iterative(n):
+
+    fib_sequence = [0, 1]
+
+    for i in range(2, n):
+
+        next_fib = fib_sequence[-1] + fib_sequence[-2]
+
+        fib_sequence.append(next_fib)
+
+    return fib_sequence
 ```
 
-### Corrected Output
+---
+
+### 04 — ✅ Validate
+
+The Manager validates the corrected program.
+
+```text
+✓ Code compiled successfully
+
+✓ Code executed successfully
+
+✓ fibonacci_iterative(10)
+
+✓ Output matches expected result
+```
+
+---
+
+# 🎯 Demonstration
+
+## Buggy Code
 
 ```python
 def fibonacci_iterative(n):
 
     if n < 0:
-
         return []
 
     elif n == 1:
-
         return [0]
 
     elif n == 2:
+        return [0, 1]
 
+    fib_sequence = [0, 1]
+
+    for i in range(2, n):
+
+    next_fib = fib_sequence[-1] + fib_sequence[-2]
+
+    fib_sequence.append(next_fib)
+
+    return fib_sequence
+```
+
+## 🔍 Detected Problems
+
+```text
+┌────────────────────────────────────────────┐
+│             ANALYSIS REPORT                │
+├────────────────────────────────────────────┤
+│                                            │
+│ ✗ Missing indentation                     │
+│ ✗ Invalid loop body structure             │
+│ ✗ Unexpected indentation level            │
+│                                            │
+└────────────────────────────────────────────┘
+```
+
+## 🛠️ Corrected Code
+
+```python
+def fibonacci_iterative(n):
+
+    if n < 0:
+        return []
+
+    elif n == 1:
+        return [0]
+
+    elif n == 2:
         return [0, 1]
 
     fib_sequence = [0, 1]
@@ -148,84 +328,154 @@ def fibonacci_iterative(n):
     return fib_sequence
 ```
 
-### Validation Result
+## ✅ Validation
 
-```
-  ✓ Code compiled successfully - No syntax errors
-  ✓ Code executed successfully - No runtime errors
-  ✓ fibonacci_iterative(10) = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-  ✓ Function output matches expected Fibonacci sequence!
+```text
+✓ Compilation successful
+✓ Execution successful
+✓ Function test successful
+✓ Output verified
+
+fibonacci_iterative(10)
+
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 ```
 
 ---
 
-## 📁 File Structure
+# 🛠️ Technology Stack
 
-```
+<p align="center">
+
+<img src="https://skillicons.dev/icons?i=python,git,github,vscode" />
+
+</p>
+
+### Core Technologies
+
+| Technology          | Usage                      |
+| ------------------- | -------------------------- |
+| 🐍 Python           | Core development           |
+| 🌳 AST              | Python syntax analysis     |
+| ⚙️ `compile()`      | Compilation validation     |
+| ▶️ `exec()`         | Runtime execution          |
+| 🧪 Python Testing   | Functional validation      |
+| 📦 Standard Library | Zero external dependencies |
+| 🔧 Git              | Version control            |
+| 🐙 GitHub           | Source-code management     |
+
+---
+
+# 📁 Project Structure
+
+```text
 crewai-code-analyzer/
 │
-├── standalone_main.py          # Entry point — runs the full pipeline
-├── standalone_analyzer.py      # Code Analyzer — detects errors
-├── standalone_corrector.py     # Code Corrector — fixes errors
-├── standalone_manager.py       # Pipeline Manager — orchestrates & validates
+├── 🧠 standalone_analyzer.py
+│   └── Code Analyzer
 │
-├── test_analyzer.py            # Test script for the analyzer
-├── test_corrector.py           # Test script for the full pipeline
+├── 🛠️ standalone_corrector.py
+│   └── Code Correction Engine
 │
-├── main.py                     # (Original) CrewAI entry point (requires OpenAI API key)
-├── run_demo.py                 # (Original) CrewAI demo script
-├── .env                        # (Original) API key configuration
+├── 🎯 standalone_manager.py
+│   └── Pipeline Manager + Validation
 │
-└── src/                        # (Original) CrewAI agent/task definitions
-    ├── agents.py
-    ├── tasks.py
-    ├── crew_setup.py
-    └── code_interpreter_tool.py
+├── 🚀 standalone_main.py
+│   └── Main Entry Point
+│
+├── 🧪 test_analyzer.py
+│   └── Analyzer Tests
+│
+├── 🧪 test_corrector.py
+│   └── Correction Pipeline Tests
+│
+├── 📄 main.py
+│   └── Original CrewAI Entry Point
+│
+├── ▶️ run_demo.py
+│   └── Original CrewAI Demo
+│
+├── 📂 src/
+│   ├── agents.py
+│   ├── tasks.py
+│   ├── crew_setup.py
+│   └── code_interpreter_tool.py
+│
+└── 📖 README.md
 ```
 
 ---
 
-## 🛠️ How It Works
+# ⚡ Getting Started
 
-### Code Analyzer
-1. Parses each line, classifying it as header, continuation, return, or regular content
-2. Checks syntax using `ast.parse()` 
-3. Analyzes indentation consistency (tabs vs spaces, wrong levels)
-4. Detects logic errors (e.g., `return` outside function)
-5. Executes the code in a sandbox to catch runtime errors
+## Prerequisites
 
-### Code Corrector
-1. Identifies each block header (`def`, `if`, `for`, `while`, etc.)
-2. Collects consecutive body lines after each header
-3. Adjusts body indentation to be one level deeper than the header
-4. Handles continuation keywords (`elif`, `else`) — keeps them at matching header level
-5. Moves the last `return` in a loop body back to the function body level
-6. Adds missing colons where needed
+```text
+Python 3.8+
+Git
+```
 
-### Pipeline Manager
-1. Calls the Analyzer to produce error report
-2. Passes the error report + original code to the Corrector
-3. Validates the corrected code:
-   - Compiles with `compile()`
-   - Executes with `exec()`
-   - Runs functional tests (e.g., Fibonacci sequence)
-4. Generates a comprehensive final report
+No API key is required.
+
+No database is required.
+
+No internet connection is required.
+
+No external Python packages are required.
 
 ---
 
-## 🔧 Customization
+## 📥 Installation
 
-You can analyze your own Python code by modifying the `EXAMPLE_CODE` variable in `standalone_main.py`:
+```bash
+git clone https://github.com/kala3013/crewai-code-analyzer.git
 
-```python
-EXAMPLE_CODE = '''def my_function(x):
-    if x > 0:
-    print("Positive")
-    return x
-'''
+cd crewai-code-analyzer
 ```
 
-Or import the components directly:
+---
+
+## ▶️ Run the Demo
+
+```bash
+python standalone_main.py
+```
+
+The program runs the complete:
+
+```text
+Analysis
+   ↓
+Correction
+   ↓
+Validation
+   ↓
+Final Report
+```
+
+pipeline using the built-in Fibonacci example.
+
+---
+
+# 🧪 Run Tests
+
+### Test Analyzer
+
+```bash
+python test_analyzer.py
+```
+
+### Test Full Correction Pipeline
+
+```bash
+python test_corrector.py
+```
+
+---
+
+# 🔌 Use As A Python Module
+
+The components can also be imported into another Python application.
 
 ```python
 from standalone_analyzer import CodeAnalyzer
@@ -234,27 +484,240 @@ from standalone_manager import PipelineManager
 
 analyzer = CodeAnalyzer()
 corrector = CodeCorrector()
-manager = PipelineManager(analyzer, corrector)
+
+manager = PipelineManager(
+    analyzer,
+    corrector
+)
 
 results = manager.run_pipeline(your_code_string)
-print(results['analysis_output'])
-print(results['correction_output'])
-print(results['validation'])
+
+print(results["analysis_output"])
+print(results["correction_output"])
+print(results["validation"])
 ```
 
 ---
 
-## 🧪 Test Results
+# 🎨 Analyze Your Own Code
 
-| Test | Result |
-|------|--------|
-| Fibonacci code with indentation errors | ✅ 3 errors detected, 2 fixes applied, corrected code produces correct Fibonacci sequence |
-| Valid Python code (no errors) | ✅ No errors reported, code passes through unchanged |
-| Missing colons | ✅ Colons automatically added |
-| Return inside loop | ✅ Return moved to function body level |
+Modify `EXAMPLE_CODE` inside:
+
+```text
+standalone_main.py
+```
+
+Example:
+
+```python
+EXAMPLE_CODE = '''
+def calculate(x):
+
+    if x > 0:
+
+    print("Positive")
+
+    return x
+'''
+```
+
+Then execute:
+
+```bash
+python standalone_main.py
+```
 
 ---
 
-## 📝 License
+# 🧪 Test Coverage
 
-This project is provided for educational and demonstration purposes.#
+| Scenario                    | Result                 |
+| --------------------------- | ---------------------- |
+| Fibonacci indentation error | ✅ Detected & corrected |
+| Valid Python code           | ✅ Pass-through         |
+| Missing colon               | ✅ Corrected            |
+| Incorrect loop indentation  | ✅ Corrected            |
+| Misplaced return            | ✅ Corrected            |
+| Compilation validation      | ✅ Supported            |
+| Runtime validation          | ✅ Supported            |
+| Functional testing          | ✅ Supported            |
+
+---
+
+# 💡 Design Philosophy
+
+This project demonstrates an important software-engineering concept:
+
+> **Break a complex problem into specialized, independently testable components.**
+
+Instead of creating one large program, the system separates responsibilities:
+
+```text
+             COMPLEX PROBLEM
+                    │
+                    ▼
+          ┌──────────────────┐
+          │ Modular Pipeline │
+          └────────┬─────────┘
+                   │
+       ┌───────────┼───────────┐
+       ▼           ▼           ▼
+   Analyze      Correct      Validate
+       │           │           │
+       └───────────┼───────────┘
+                   ▼
+              Final Result
+```
+
+This makes the project easier to:
+
+* Extend
+* Test
+* Debug
+* Maintain
+* Integrate with future AI systems
+
+---
+
+# 🔮 Future Improvements
+
+The current system uses deterministic rule-based correction. Future versions could introduce:
+
+### 🤖 AI-Powered Code Repair
+
+Integrate LLMs for advanced semantic error correction.
+
+### 🌐 Web Interface
+
+Build a browser-based code editor using:
+
+```text
+React
++
+Monaco Editor
++
+Python Backend
+```
+
+### 📊 Interactive Error Dashboard
+
+Display:
+
+* Error locations
+* Error categories
+* Suggested fixes
+* Before/after comparison
+* Validation status
+
+### 🔐 Secure Code Sandbox
+
+Run untrusted code inside isolated environments using containerization.
+
+### 🧠 Multi-Agent Architecture
+
+Expand the pipeline into specialized agents:
+
+```text
+             Manager Agent
+                  │
+        ┌─────────┼─────────┐
+        ▼         ▼         ▼
+    Analyzer   Corrector   Tester
+      Agent      Agent      Agent
+        │         │         │
+        └─────────┼─────────┘
+                  ▼
+            Final Report
+```
+
+---
+
+# 📈 Project Highlights
+
+```text
+┌──────────────────────────────────────────────┐
+│              PROJECT HIGHLIGHTS              │
+├──────────────────────────────────────────────┤
+│                                              │
+│  🧠 Rule-Based Code Intelligence             │
+│  🔍 Automated Error Detection                │
+│  🛠️ Automated Code Correction                │
+│  🎯 Modular Pipeline Architecture            │
+│  ✅ Compilation & Runtime Validation         │
+│  🧪 Functional Testing                       │
+│  📦 Zero External Dependencies               │
+│  🔌 Easily Extensible Architecture           │
+│                                              │
+└──────────────────────────────────────────────┘
+```
+
+---
+
+# 🎓 Learning Outcomes
+
+Through this project, the following concepts are demonstrated:
+
+* Python Abstract Syntax Tree
+* Static code analysis
+* Error classification
+* Automated code transformation
+* Indentation parsing
+* Runtime execution
+* Modular software architecture
+* Pipeline design
+* Functional testing
+* Error handling
+* Test-driven development concepts
+* AI-agent-inspired architecture
+
+---
+
+# 👨‍💻 Developer
+
+<p align="center">
+
+### **Kalanidhi M C**
+
+**Computer Science Engineering Student | Software Developer | Full Stack & AI Enthusiast**
+
+<br>
+
+<a href="https://github.com/kala3013">
+<img src="https://img.shields.io/badge/GitHub-kala3013-181717?style=for-the-badge&logo=github">
+</a>
+
+<a href="https://www.linkedin.com/in/kalanidhi-m-c-b568782a5/">
+<img src="https://img.shields.io/badge/LinkedIn-Kalanidhi%20M%20C-0A66C2?style=for-the-badge&logo=linkedin">
+</a>
+
+<a href="mailto:kalanidhimurugan@gmail.com">
+<img src="https://img.shields.io/badge/Email-kalanidhimurugan%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white">
+</a>
+
+</p>
+
+---
+
+# ⭐ Support
+
+If you find this project useful or interesting:
+
+⭐ **Star the repository**
+
+🍴 **Fork the project**
+
+🐛 **Report issues**
+
+💡 **Suggest improvements**
+
+🤝 **Contribute**
+
+---
+
+<p align="center">
+
+### 🧠 Analyze Code. 🛠️ Fix Errors. ✅ Validate Results.
+
+**Built with Python & curiosity.**
+
+</p>
